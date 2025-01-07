@@ -90,6 +90,27 @@
   opacity: 1;
   transform: translate(0, 0);
 }
+.cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #004AAD;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .cookie-banner button {
+            background-color: #FFDA1B;
+            color: #004AAD;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -107,6 +128,11 @@
         <a style="color: black;" href="#auto-usate">Auto Usate</a>
         <a style="color: black;" href="#contatti">Contatti</a>
     </nav>
+    <!-- Banner Cookie -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Questo sito utilizza i cookie per migliorare l'esperienza utente. <a href="#privacy" style="color: #FFDA1B;">Leggi la nostra Privacy e Policy.</a></p>
+        <button onclick="acceptCookies()">Accetta</button>
+    </div>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="margin-top: 20px;">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -121,7 +147,7 @@
             <img src="Immagine_Servizio_Auto_1.png"  alt="Servizio auto Officina Carbone Giuseppe"class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="Immagine_Cambio_oilo.png"  alt="Cambio olio Officina Giuseppe Carbone Barletta" class="d-block w-100" alt="...">
+            <img src="Immagine_Cambio_oilo.png"  alt="Cambio olio Officina Giuseppe Carbone Barletta"class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
             <img src="Immagine_Soccorso_Stradale.png"  alt="Soccorso Stradale Officina Carbone Barletta" class="d-block w-100" alt="...">
@@ -248,9 +274,24 @@
         </section>
     </div>
 
-    <footer class=" tag">
+     <footer>
         <p>&copy; 2025 Officina Giuseppe Carbone. Tutti i diritti riservati.</p>
+        <p><a href="Privacy_and_Policy.html" style="color: #FFDA1B;">Privacy e Policy</a></p>
     </footer>
+    <!-- Script per accettazione Cookie -->
+    <script>
+        function acceptCookies() {
+            document.getElementById('cookieBanner').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        }
+
+        // Controlla se l'utente ha già accettato i cookie
+        window.onload = function() {
+            if (localStorage.getItem('cookiesAccepted') === 'true') {
+                document.getElementById('cookieBanner').style.display = 'none';
+            }
+        };
+    </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
