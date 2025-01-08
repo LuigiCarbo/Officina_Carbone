@@ -95,17 +95,33 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: #004AAD;
+            background-color: #092f61;
             color: white;
             padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
+            opacity: 0.9;
         }
-        .cookie-banner button {
+        .accept{
             background-color: #FFDA1B;
-            color: #004AAD;
+            color: #000000;
+            margin-left: 5px;
+            margin-right: 15px;
+            height: 3.3rem;
+            width: 9rem;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.5rem;
+        }
+        .close{
+            background-color: #737167;
+            color: #000000;
+            margin-right: 5px;
+            height: 2rem;
             border: none;
             padding: 5px 10px;
             cursor: pointer;
@@ -129,9 +145,15 @@
         <a style="color: black;" href="#contatti">Contatti</a>
     </nav>
     <!-- Banner Cookie -->
-    <div class="cookie-banner" id="cookieBanner">
-        <p>Questo sito utilizza i cookie per migliorare l'esperienza utente. <a href="Privacy_and_Policy.html" style="color: #FFDA1B;">Leggi la nostra Privacy e Policy.</a></p>
-        <button onclick="acceptCookies()">Accetta</button>
+    <div class="cookie-banner" id="cookieBanner" style="display: flex;flex-direction: row;justify-content: space-evenly">
+        <i class="bi bi-cookie" style="font-size: 5rem; margin-left: 10px;margin-right: 10px; color: #ff9500;"></i>
+        <div style="display: flex;flex-direction: column; align-items: flex-end;">
+        <p style="text-align: center;">Questo sito utilizza i cookie per migliorare l'esperienza utente. <a href="Privacy_and_Policy.html" style="color: #FFDA1B;">Leggi la nostra Privacy e Policy.</a></p>
+        <div style="display: flex;flex-direction: row; align-items:center;">
+            <button class="close" onclick="closeCookies()">Chiudi</button>
+            <button class="accept" onclick="acceptCookies()"><strong>Accetta</strong></button>
+        </div>
+    </div>
     </div>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="margin-top: 20px;">
         <div class="carousel-indicators">
@@ -280,7 +302,7 @@
     </footer>
     <!-- Script per accettazione Cookie -->
     <script>
-        function acceptCookies() {
+         function acceptCookies() {
             document.getElementById('cookieBanner').style.display = 'none';
             localStorage.setItem('cookiesAccepted', 'true');
         }
@@ -291,6 +313,10 @@
                 document.getElementById('cookieBanner').style.display = 'none';
             }
         };
+        <!-- Script per accettazione Cookie -->
+        function closeCookiesCookies() {
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
     </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
